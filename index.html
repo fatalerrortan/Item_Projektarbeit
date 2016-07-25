@@ -64,6 +64,26 @@
                     return false;
                 }
             });
+            function redirect(){window.location.replace('https://mail.google.com/mail/');}
+            $('#reg_button').click(function(){
+
+                alert("Sie würden sofort ein Bestätigungsemail in der von Ihnen eingetragenen Email-Adresse empfangen!");
+
+
+                $.ajax({
+                    type:"POST",
+                    url:'email.php',
+                    dataType:"text",
+                    contentType:false,
+                    cache:false,
+                    processData:false,
+                    data:'',
+                    success:function(responseText){
+                        redirect();
+                    }
+                });
+                return false;
+            });
         });
     </script>
 </head>
@@ -306,7 +326,7 @@
                         </div>
 
 
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button id="reg_button" type="submit" class="btn btn-primary">Submit</button>
                     </form>
                 </div>
             </div>
