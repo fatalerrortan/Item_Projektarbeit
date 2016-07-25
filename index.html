@@ -32,8 +32,19 @@
     <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
     <script>
         $(document).ready(function(){
+
+            $('#anmelden').click(function(){
+
+                $('#login_form').toggle('slow');
+
+                $('html, body').animate({
+                    scrollTop: $("#login_form").offset().top - 100
+                }, 2000);
+            });
+
             $('#reg_form input').on('change', function() {
-               var payment =  $('input[name=payment]:checked', '#reg_form').val();
+
+                var payment =  $('input[name=payment]:checked', '#reg_form').val();
                 if(payment == 'pp'){
                     $('#sepa_form').hide();
                     $('#cc_form').hide();
@@ -76,14 +87,14 @@
                     <li class="hidden">
                         <a href="#page-top"></a>
                     </li>
-                    <li class="page-scroll">
+                    <li class="page-scroll" id="anmelden">
                         <a href="#portfolio">Anmelden</a>
                     </li>
                     <li class="page-scroll">
                         <a href="#about">About</a>
                     </li>
                     <li class="page-scroll">
-                        <a href="#contact">Contact</a>
+                        <a href="#contact">Registrierung</a>
                     </li>
                 </ul>
             </div>
@@ -107,6 +118,30 @@
             </div>
         </div>
     </header>
+
+<!--login-->
+    <div class="row" id="login_form" style="display: none;">
+        <div class="col-md-4 col-md-offset-4">
+            <div class="well">
+                <form id="log_form">
+                    <fieldset class="form-group">
+                        <label for="login_email">Email-Adress</label>
+                        <input type="email" class="form-control" id="login_email" placeholder="Enter email">
+                    </fieldset>
+                    <fieldset class="form-group">
+                        <label for="login_pw">Passwort</label>
+                        <input type="password" class="form-control" id="login_pw" placeholder="Passwort">
+                    </fieldset>
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox"> Remember Username
+                        </label>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
     <!-- About Section -->
     <section class="success" id="about">
         <div class="container">
@@ -118,10 +153,12 @@
             </div>
             <div class="row">
                 <div class="col-lg-4 col-lg-offset-2">
-                    <p>Freelancer is a free bootstrap theme created by Start Bootstrap. The download includes the complete source files including HTML, CSS, and JavaScript as well as optional LESS stylesheets for easy customization.</p>
+                    <p>The Thunderhead is one of the leading global suppliers of products, systems, solutions, and services for the economical,
+                        reliable, and intelligent transmission and distribution of Energy.</p>
                 </div>
                 <div class="col-lg-4">
-                    <p>Whether you're a student looking to showcase your work, a professional looking to attract clients, or a graphic artist looking to share your projects, this template is the perfect starting point!</p>
+                    <p>As the trusted partner for the development of an efficient Energy Management System, the Thunderhead provides
+                        companies and industries with the portfolio that meets their needs.</p>
                 </div>
             </div>
         </div>
@@ -154,12 +191,12 @@
 
 
                         <fieldset class="form-group">
-                            <label for="exampleInputEmail1">Email address</label>
+                            <label for="exampleInputEmail1">Email-Adress</label>
                             <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
                             <small class="text-muted">We'll never share your email with anyone else.</small>
                         </fieldset>
                         <fieldset class="form-group">
-                            <label for="exampleInputPassword1">Password</label>
+                            <label for="exampleInputPassword1">Passwort</label>
                             <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Passwort">
                         </fieldset>
                         <fieldset class="form-group">
@@ -262,7 +299,7 @@
                                     </fieldset>
                                 </div>
                                 <div class="well" id="pp_form" style="display: none">
-                                    <button type="button" class="btn btn-info">Check in Paypal</button>
+                                    <button type="button" class="btn btn-info"><a href="https://www.paypal.com/de/webapps/mpp/home" style="color: #3c3c3c">Check in Paypal</a></button>
                                 </div>
                             </div>
 
@@ -283,8 +320,8 @@
                 <div class="row">
                     <div class="footer-col col-md-4">
                         <h3>Location</h3>
-                        <p>3481 Melrose Place
-                            <br>Beverly Hills, CA 90210</p>
+                        <p> Universität Leipzig Augustusplatz 10,
+                            <br>04109 Leipzig Deutschland</p>
                     </div>
                     <div class="footer-col col-md-4">
                         <h3>Around the Web</h3>
@@ -307,8 +344,8 @@
                         </ul>
                     </div>
                     <div class="footer-col col-md-4">
-                        <h3>About Freelancer</h3>
-                        <p>Freelance is a free to use, open source Bootstrap theme created by <a href="http://startbootstrap.com">Start Bootstrap</a>.</p>
+                        <h3>About Thunderhead</h3>
+                        <p>it is awesome, it is awesome it is awesome,it is awesome</p>
                     </div>
                 </div>
             </div>
@@ -317,7 +354,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
-                        Copyright &copy; Your Website 2016
+                        Copyright &copy; Thunderhead 2016
                     </div>
                 </div>
             </div>
