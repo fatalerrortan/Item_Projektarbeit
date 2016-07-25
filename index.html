@@ -29,6 +29,32 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+    <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function(){
+            $('#reg_form input').on('change', function() {
+               var payment =  $('input[name=payment]:checked', '#reg_form').val();
+                if(payment == 'pp'){
+                    $('#sepa_form').hide();
+                    $('#cc_form').hide();
+                    $('#pp_form').show();
+                    return false;
+                }
+                if(payment == 'cc'){
+                    $('#sepa_form').hide();
+                    $('#pp_form').hide();
+                    $('#cc_form').show();
+                    return false;
+                }
+                if(payment == 'sepa'){
+                    $('#pp_form').hide();
+                    $('#cc_form').hide();
+                    $('#sepa_form').show();
+                    return false;
+                }
+            });
+        });
+    </script>
 </head>
 
 <body id="page-top" class="index">
@@ -112,7 +138,7 @@
             </div>
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2">
-                    <form>
+                    <form id="reg_form">
 
 
                         <!--<div class="row">-->
@@ -169,34 +195,6 @@
                                 <option>Branche 5</option>
                             </select>
                         </fieldset>
-                        <!--<fieldset class="form-group">-->
-                            <!--<label for="exampleTextarea">Example textarea</label>-->
-                            <!--<textarea class="form-control" id="exampleTextarea" rows="3"></textarea>-->
-                        <!--</fieldset>-->
-                        <!--<fieldset class="form-group">-->
-                            <!--<label for="exampleInputFile">File input</label>-->
-                            <!--<input type="file" class="form-control-file" id="exampleInputFile">-->
-                            <!--<small class="text-muted">This is some placeholder block-level help text for the above input. It's a bit lighter and easily wraps to a new line.</small>-->
-                        <!--</fieldset>-->
-
-                        <!--<div class="radio">-->
-                            <!--<label>-->
-                                <!--<input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>-->
-                                <!--Option one is this and that&mdash;be sure to include why it's great-->
-                            <!--</label>-->
-                        <!--</div>-->
-                        <!--<div class="radio">-->
-                            <!--<label>-->
-                                <!--<input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">-->
-                                <!--Option two can be something else and selecting it will deselect option one-->
-                            <!--</label>-->
-                        <!--</div>-->
-                        <!--<div class="radio disabled">-->
-                            <!--<label>-->
-                                <!--<input type="radio" name="optionsRadios" id="optionsRadios3" value="option3" disabled>-->
-                                <!--Option three is disabled-->
-                            <!--</label>-->
-                        <!--</div>-->
                         <div class="checkbox">
                             <label>
                                 <input type="checkbox"> News Letter (Ja, informieren Sie sich über die Neuheiten. Eine Anmeldung ist jederzeit möglich)
@@ -209,10 +207,62 @@
                             </div>
                             <div class="col-md-12">
                                 <div class="col-md-4">
-                                    <div class="well"><h3>SEPA</h3></div>
+                                    <div class="well radio">
+                                        <spain>SEPA</spain>
+                                        <label>
+                                            <input type="radio" name="payment" id="sepa" value="sepa" checked>
+                                        </label>
+                                    </div>
                                 </div>
                                 <div class="col-md-4">
-                                    <div class="well"><h3>Kreditkarte</h3></div>
+                                    <div class="well radio">
+                                        <spain>Kreditkarte</spain>
+                                        <label>
+                                            <input type="radio" name="payment" id="cc" value="cc">
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 radio">
+                                    <div class="well">
+                                        <spain>Paypal</spain>
+                                        <label>
+                                            <input type="radio" name="payment" id="pp" value="pp">
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <div class="well" id="sepa_form">
+                                    <fieldset class="form-group">
+                                        <label for="inhaber">Inhaber</label>
+                                        <input type="text" class="form-control" id="inhaber" placeholder="Inhaber">
+                                    </fieldset>
+                                    <fieldset class="form-group">
+                                        <label for="iban">IBAN</label>
+                                        <input type="text" class="form-control" id="iban" placeholder="IBAN">
+                                    </fieldset>
+                                    <fieldset class="form-group">
+                                        <label for="bic">BIC</label>
+                                        <input type="text" class="form-control" id="bic" placeholder="BIC">
+                                    </fieldset>
+                                </div>
+                                <div class="well" id="cc_form" style="display: none">
+                                    <fieldset class="form-group">
+                                        <label for="ccnb">Kartenummer</label>
+                                        <input type="text" class="form-control" id="ccnb" placeholder="Kartenummer">
+                                    </fieldset>
+                                    <fieldset class="form-group">
+                                        <label for="ccex">Ablaufsdatum</label>
+                                        <input type="date" class="form-control" id="ccex">
+                                    </fieldset>
+                                    <fieldset class="form-group">
+                                        <label for="cccd">Sicherheitscode</label>
+                                        <input type="number" class="form-control input-sm" id="cccd" placeholder="XXX">
+                                    </fieldset>
+                                </div>
+                                <div class="well" id="pp_form" style="display: none">
+                                    <button type="button" class="btn btn-info">Check in Paypal</button>
                                 </div>
                             </div>
 
