@@ -1,1 +1,1 @@
-GPM2 Projekt Übung Universität Leipzig
+GPM2 Projekt Universität Leipzig
